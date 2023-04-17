@@ -1,0 +1,60 @@
+Syarat : 
+- aplikasi telah berfungsi dan telah selesai.
+- minimal terdapat 1 vm untuk manager dan 1 vm untuk worker, lebih banyak lebih baik.
+    Setting Adapter VM : (NATNetwork dan Host-Only Adapter)
+
+INSTALL DOCKER :
+1. sudo ./install.sh
+
+# AGAR DOCKER BISA DIJALANKAN TANPA SUDO
+2. sudo ./user.sh
+
+LANGKAH - LANGKAH INISIALISASI DOCKER SWARM :
+Pada Node manager (IP Sesuaikan)
+1. docker login
+2. docker swarm init --advertise-addr 16.16.16.10
+3. docker swarm join-token worker # Salin command yang muncul
+
+Pada Setiap Node Worker (IP Sesuaikan)
+1. docker login
+2. docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-1awxwuwd3z9j1z3puu7rcgdbx 16.16.16.10:2377
+
+Ket :
+1. direktori db/ berisi Dockerfile yang akan dijadikan image dan juga file sql dari aplikasi.
+2. direktori haproxy/ berisi Dockerfile yang akan dijadikan image untuk haproxy.
+3. direktori web/ berisi source code dari aplikasi, Dockerfile untuk membuat image, dan juga file konfigurasi dari apache agar website bisa berjalan.
+4. direktori utama berisi struktur direktori dari projek ini, file docker-compose.yml, file konfigurasi haproxy, dan file tutorial.
+5. Gunakan sudo jika belum memasukan user ke group docker.
+
+LANGKAH-LANGKAH DOCKER SWARM :
+
+1. build image dari setiap service dan push ke akun dockerhub masing-masing
+    # Login ke akun DockerHub
+    docker login
+
+    # Build dan push image db:
+    - cd db
+    - docker build -t kevinmz/db-widan .
+    - docker push kevinmz/db-widan
+
+    # Build dan push image haproxy:
+    - cd haproxy
+    - docker build -t kevinmz/haproxy .
+    - docker push kevinmz/haproxy
+
+    # Build dan push image web:
+    - cd web
+    - docker build -t kevinmz/web-widan .
+    - docker push kevinmz/web-widan
+
+2. jalankan docker stack deploy
+    docker stack deploy -c docker-compose.yml --with-registry-auth widan
+    
+3. Cek apakah telah running
+    docker stack services widan
+    docker service ls
+
+4. Cek masing-masing service
+    docker service ps widan_web
+    docker service ps widan_db
+    docker service ps widan_haproxy
