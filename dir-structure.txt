@@ -1,13 +1,15 @@
-ha-widan/
+ha-widanv2/
 ├── db
 │   ├── Dockerfile
 │   └── widan_db.sql
-├── dir-structure.txt
-├── docker-compose.yml
-├── haproxy
-│   └── Dockerfile
+├── delete.sh
+├── deploy.sh
 ├── haproxy.cfg
-├── tutor.txt
+├── installation_docker
+│   ├── install-deb.sh
+│   └── install-jammy.sh
+├── user.sh
+├── widan.yml
 └── web
     ├── app/
     ├── conf

@@ -38,13 +38,13 @@ No | Virtual Machine | Spesification | NATNetwork | Host-Only Network
 
 There are 2 networks, namely NAT Network for internet access needs and Host-Only Network for remote VM needs from the Host and used for communication between vm.
 
-NATNetwork :
+NATNetwork :  
 [![nat-network](images/natnetwork.png)]()
 
-Host-Only Network :
+Host-Only Network :  
 [![host-only](images/host-only.png)]()
 
-Edit /etc/netplan/00-installer-config.yaml on each node :
+Edit /etc/netplan/00-installer-config.yaml on each node :  
 [![ip-manager](images/ip-manager.png)]()
 [![ip-worker1](images/ip-worker1.png)]()
 [![ip-worker2](images/ip-worker2.png)]()
@@ -89,15 +89,15 @@ curl -sSL https://get.docker.com/ | sudo sh
 2. Docker install script from my git repository
 ```sh
 git clone https://github.com/zaidanm16/docker-ha.git
-sudo chmod u+x install.sh
-sudo ./install.sh
+cd installation_docker
+sudo chmod u+x install-jammy.sh
+sudo ./install-jammy.sh
 ```
 
 Test Installed Docker Engine
 ```sh
 docker version
 docker info
-
 sudo systemctl status docker
 ```
 
