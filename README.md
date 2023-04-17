@@ -1,4 +1,4 @@
-[![high-availability](images/banner.png)](https://github.com/zaidanm16/widanstore/)
+[![high-availability](images/banner.png)](https://github.com/zaidanm16/widan-store/)
 
 ## HIGH AVAILABILITY WITH DOCKER SWARM
 
