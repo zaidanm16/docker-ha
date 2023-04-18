@@ -181,7 +181,7 @@ Note :
 > [tag] is your image tag or your image version  
 > [path] is path to Dockerfile, if Dockerfile is in the same directory you can use dot (.)
 ```sh
-cd db
+cd web
 docker build -t [username]/[image-name]:[tag] [path]
 ```
 So mine is :
