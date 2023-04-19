@@ -235,7 +235,7 @@ http://[manager-ip]
 http://16.16.16.10
 
 ## Monitoring
-See your haproxy load balancing stats at http://[manager-ip]/haproxy 
+See your haproxy load balancing stats at http://[manager-ip]/haproxy  
 http://16.16.16.10/haproxy
 
 Login using credentials that you create at haproxy.cfg
